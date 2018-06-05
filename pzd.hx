@@ -3,7 +3,8 @@
 
 import haxe.sys.*;
 import haxe.Timer;
-import yaml.*;
+import haxe.*;
+import sys.*;
 
 class Pzd {
     // if name == main
@@ -13,6 +14,10 @@ class Pzd {
         var loop = new EventLoop(log);
         log.debug('Started pidzero');
         loop.start();
+        var mainloop = new Timer(1000);
+        mainloop.run = function () {
+            //do the thing
+        }
     }
 }
 
@@ -21,6 +26,9 @@ class EventLoop {
     public var desired_state = {};
     public var current_state = {};
     public var loop = new Timer(100);
+    private var counter:Int = 0;
+    private var daemons:Any;
+    private var firstrun:Bool = true;
 
     public function new(logger:Logger) : Void {
         this.log = logger;
@@ -37,18 +45,37 @@ class EventLoop {
         this.log.debug('Event loop has been stopped.');
     }
 
-    private function getDaemons() : Any {
-        var units = {};
-        var daemon = sys.FileSystem.readDirectory('pz.d');
-        for (d in daemon) {
+    public function status() : Bool {
+        return true;
+    }
 
-        }
-        return units;
+    private function getDaemons() : Void {
+        var f = sys.io.File.getContent('daemons.json');
+        var units = haxe.Json.parse(f);
+        this.counter = 0;
+        this.daemons = units;
+    }
+
+    private function runonce() : Void {
+        this.getDaemons();
+        this.spawn();
+    }
+
+    private function spawn() : Void {
+        // spawn processes
+        
     }
 
     private function handle() : Void {
         // do the event loop things here
+        if (this.firstrun == true) {
+            this.runonce();
+        }
+        if (this.counter % 100 == 0) {
+            this.getDaemons();
+        }
 
+        this.counter++;
     }
 }
 
@@ -57,24 +84,41 @@ class Logger {
     public var loglevel:String;
     public var outlog:Bool;
     public var filelog:Bool;
+    public var jsonstdout:Bool;
+    public var jsonfile:Bool;
 
-
-    public function new(logpath:String='/var/log/pzd', loglevel:String='info', outlog:Bool=true, filelog:Bool=true) : Void {
+    public function new(logpath:String='/var/log/pzd', loglevel:String='info', outlog:Bool=true, filelog:Bool=true, jsonstdout:Bool=false, jsonfile:Bool=true) : Void {
         this.logpath = logpath;
         this.loglevel = loglevel;
         this.outlog = outlog;
         this.filelog = filelog;
+        this.jsonstdout = jsonstdout;
+        this.jsonfile = jsonfile;
         return;
     }
 
-    private function log(loglevel:String, logtext:String) : Void {
-        var msg = '${Date.now()} :: ${loglevel} :: ${logtext}';
+    private function render(msg:Any, bit:Bool) : Any {
+        if (bit == true) {
+            return Json.stringify(msg);
+        } else {
+            return msg;
+        }
+    }
+
+    private function log(loglevel:String, logtext:String, src:String='Main') : Void {
+        //var msg = '${Date.now()} :: ${src} :: ${loglevel} :: ${logtext}';
+        var msg = {
+            timestamp : Date.now(),
+            source    : src,
+            loglevel  : loglevel,
+            logtext   : logtext
+        };
         if (this.outlog == true) {
-            trace(msg);
+            trace(this.render(msg, this.jsonstdout));
         }
         if (this.filelog == true) {
             var f = sys.io.File.append(this.logpath);
-            f.writeString('${msg}\n');
+            f.writeString('${this.render(msg, this.jsonfile)}\n');
             f.flush();
             f.close();
         }
@@ -104,18 +148,16 @@ class ChildProcess {
     public var pid:Int;
     public var command:String;
     public var vital:Bool;
-    public var replicas:Int;
     public var comments:String;
     public var pidstatus:Bool;
     public var pidrc:Int;
     private var p:sys.io.Process;
 
-    public function new(name:String, command:String, vital:Bool, replicas:Int, comments:String) : Void {
+    public function new(name:String, command:String, vital:Bool, comments:String) : Void {
         // return a new child process object
         this.name = name;
         this.command = command;
         this.vital = vital;
-        this.replicas = replicas;
         this.comments = comments;
         return;
     }
@@ -140,46 +182,4 @@ class ChildProcess {
         return 'test';
     }
 
-}
-
-class ChildProcessStub {
-    public var name:String;
-    public var pid:Int;
-    public var command:String;
-    public var vital:Bool;
-    public var replicas:Int;
-    public var comments:String;
-    public var pidstatus:Bool;
-    public var pidrc:Int;
-    private var p:sys.io.Process;
-
-    public function new(name:String, command:String, vital:Bool, replicas:Int, comments:String) : Void {
-        // return a new child process object
-        this.name = name;
-        this.command = command;
-        this.vital = vital;
-        this.replicas = replicas;
-        this.comments = comments;
-        return;
-    }
-
-    public function start() : Bool {
-        // start the child process here
-        return true;
-    }
-
-    public function status() : Bool {
-        // check the status of the process here
-        return true;
-    }
-
-    public function rc() : Null<Int> {
-        // return returncode
-        return null;
-    }
-
-    public function output() : String {
-        // get the process output from stdout + stderr
-        return 'test';
-    }
 }

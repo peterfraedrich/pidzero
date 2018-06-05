@@ -23,3 +23,114 @@
 2018-06-05 12:38:15 :: DEBUG :: Started new event loop.
 2018-06-05 12:47:27 :: DEBUG :: Started pidzero
 2018-06-05 12:47:27 :: DEBUG :: Started new event loop.
+2018-06-05 15:53:10 :: DEBUG :: Started pidzero
+2018-06-05 15:53:10 :: DEBUG :: Started new event loop.
+2018-06-05 15:53:30 :: DEBUG :: Started pidzero
+2018-06-05 15:53:30 :: DEBUG :: Started new event loop.
+2018-06-05 15:53:43 :: DEBUG :: Started pidzero
+2018-06-05 15:53:43 :: DEBUG :: Started new event loop.
+2018-06-05 15:56:06 :: DEBUG :: Started pidzero
+2018-06-05 15:56:06 :: DEBUG :: Started new event loop.
+2018-06-05 15:56:28 :: DEBUG :: Started pidzero
+2018-06-05 15:56:28 :: DEBUG :: Started new event loop.
+2018-06-05 15:56:35 :: DEBUG :: Started pidzero
+2018-06-05 15:56:35 :: DEBUG :: Started new event loop.
+2018-06-05 15:57:20 :: DEBUG :: Started pidzero
+2018-06-05 15:57:20 :: DEBUG :: Started new event loop.
+2018-06-05 15:58:05 :: DEBUG :: Started pidzero
+2018-06-05 15:58:05 :: DEBUG :: Started new event loop.
+2018-06-05 15:58:17 :: Main :: DEBUG :: Started pidzero
+2018-06-05 15:58:17 :: Main :: DEBUG :: Started new event loop.
+{ "timestamp" : "2018-06-05 16:00:40", "source" : "Main", "loglevel" : "DEBUG", "log" : "Started pidzero" }
+{ "timestamp" : "2018-06-05 16:00:40", "source" : "Main", "loglevel" : "DEBUG", "log" : "Started new event loop." }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:01:28, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:01:28, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:02:15, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:02:15, source => Main }
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:02:51","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:02:51","source":"Main"}
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:03:05, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:03:05, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:03:28, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:03:28, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:03:36, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:03:36, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:05:13, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:05:13, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:05:24, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:05:24, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:05:57, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:05:57, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:06:08, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:06:08, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:06:19, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:06:19, source => Main }
+{ loglevel => DEBUG, logtext => Started pidzero, timestamp => 2018-06-05 16:06:35, source => Main }
+{ loglevel => DEBUG, logtext => Started new event loop., timestamp => 2018-06-05 16:06:35, source => Main }
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:06:58","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:06:58","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:08:08","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:08:08","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:14:42","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:14:42","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:14:55","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:14:55","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:28:08","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:28:08","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:28:24","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:28:24","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:30:11","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:30:11","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:36:08","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:36:08","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:43:55","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:43:55","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 16:47:03","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 16:47:03","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:11:34","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:11:34","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:11:51","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:12:26","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:12:26","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:13:35","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:13:35","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:15:36","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:15:36","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:16:05","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:16:05","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:16:36","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:16:36","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:16:44","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:16:44","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:17:28","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:17:28","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:20:59","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:20:59","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:21:16","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:21:16","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:24:04","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:24:04","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:47:42","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:47:42","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:47:58","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:47:58","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:48:29","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:48:29","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:49:12","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:49:12","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:50:24","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:50:24","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:50:53","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:50:53","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:53:35","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:53:35","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:54:21","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:54:21","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:54:53","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:54:53","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:55:05","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:55:05","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:57:10","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:58:10","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started pidzero","timestamp":"2018-06-05 17:58:43","source":"Main"}
+{"loglevel":"DEBUG","logtext":"Started new event loop.","timestamp":"2018-06-05 17:58:43","source":"Main"}

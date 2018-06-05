@@ -1,0 +1,16 @@
+[
+    {
+        "command": "/usr/bin/nc -l -k 5000",
+        "vital": true,
+        "comments": "test service",
+        "environment": {
+            "test": "somevar"
+        }
+    },
+    {
+        "command": "/usr/bin/nc -l -k 5001",
+        "vital": true,
+        "comments": "test service #2",
+        "environment": {}
+    }
+]
