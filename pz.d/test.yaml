@@ -1,0 +1,4 @@
+command: /usr/bin/nc -l -k 8080
+vital: true
+replicas: 1
+comments: "test service"
