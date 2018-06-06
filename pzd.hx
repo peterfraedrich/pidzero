@@ -9,6 +9,7 @@ import haxe.*;
 import sys.*;
 #if cpp
     import cpp.vm.Thread;
+    import cpp.vm.*;
 #end
 #if neko
     import neko.vm.Thread;
@@ -18,14 +19,25 @@ class Pzd {
     // if name == main
     static public function main():Void {
         // do the stuff
-        var log = new Logger('pzd.log');
-        var loop = new EventLoop(log);
-        log.debug('Started pidzero');
-        loop.start();
-        trace('main');
+        Config.loadConfig();
+        Log.debug('Starting pidzero');
         while (true) {
-            trace('true');
+            if (EventLoop.init == false) {
+                EventLoop.runOnce();
+            }
+            EventLoop.getOutput();
+            EventLoop.checkStatus();
+            EventLoop.counter++;
         }
+    }
+}
+
+class Config {
+    public static var c:Null<Dynamic>;
+    public static function loadConfig() : Void {
+        var j = sys.io.File.getContent('config.json');
+        Config.c = haxe.Json.parse(j);
+        return;
     }
 }
 
@@ -34,144 +46,29 @@ class Queue {
     public static var errq:Array<Dynamic> = [];
 }
 
-class EventLoop {
-    public var log:Logger;
-    public var procs:Array<ChildProcess> = [];
-    public var loop = new Timer(100);
-    private var counter:Int = 0;
-    private var daemons:Array<Dynamic>;
-    private var firstrun:Bool = true;
+class Log {
 
-    public function new(logger:Logger) : Void {
-        this.log = logger;
-        this.loop.run = this.handle;
-    }
-
-    public function start() : Void {
-        this.loop.run();
-        this.log.debug('Started new event loop.');
-    }
-
-    public function stop() : Void {
-        this.loop.stop();
-        this.log.debug('Event loop has been stopped.');
-    }
-
-    private function getDaemons() : Void {
-        var f = sys.io.File.getContent('daemons.json');
-        var units = haxe.Json.parse(f);
-        this.counter = 0;
-        this.daemons = units;
-    }
-
-    private function runonce() : Void {
-        this.getDaemons();
-        this.spawn();
-        this.firstrun = false;
-    }
-
-    private function spawn() : Void {
-        // spawn processes
-        for (d in this.daemons) {
-            var p = new ChildProcess(d.name, d.command, d.vital, d.comments, d.environment, this.log);
-            var res = p.start();
-            if (res == true) {
-                this.procs.push(p);
-            } else {
-                this.log.error('Daemon ${d.name} did not start; failing.', 'class EventLoop() => method spawn()');
-            }
-        }
-    }
-
-    private function checkStatus() : Void {
-        /// check process status
-        for (p in this.procs) {
-            trace(p.rc);
-            if (p.rc != null) {
-                this.log.info('Daemon ${p.name} exited with status code ${p.rc}.');
-                if (p.vital == true) {
-                    this.log.error('Daemon ${p.name} is marked as vital:${p.vital} and existed with code ${p.rc}.');
-                }
-            }
-        }
-    }
-
-    private function getOutput() : Void {
-        // get process output
-        trace('go 1');
-        var out = Queue.outq.shift();
-        trace(out);
-        if (out != null) {
-            this.log.info(out[0], out[1]);
-        }
-        trace('go 2');
-        var err = Queue.errq.shift();
-        trace(err);
-        if (err != null) {
-            this.log.warn(err[0], err[1]);
-        }
-        trace('go 3');
-        return;
-    }
-
-    private function handle() : Void {
-        // do the event loop things here
-        trace('*** START');
-        if (this.firstrun == true) {
-            this.runonce();
-            trace('run1');
-        }
-        this.checkStatus();
-        trace('checkStatus()');
-        this.getOutput();
-        trace('getOutput()');
-
-        this.counter++;
-        trace('counter++');
-        trace('COUNTER: ${this.counter}');
-    }
-}
-
-class Logger {
-    public var logpath:String;
-    public var loglevel:String;
-    public var outlog:Bool;
-    public var filelog:Bool;
-    public var jsonstdout:Bool;
-    public var jsonfile:Bool;
-
-    public function new(logpath:String='/var/log/pzd', loglevel:String='info', outlog:Bool=true, filelog:Bool=true, jsonstdout:Bool=false, jsonfile:Bool=true) : Void {
-        this.logpath = logpath;
-        this.loglevel = loglevel;
-        this.outlog = outlog;
-        this.filelog = filelog;
-        this.jsonstdout = jsonstdout;
-        this.jsonfile = jsonfile;
-        return;
-    }
-
-    private function render(msg:Any, bit:Bool) : Any {
-        if (bit == true) {
+    private static function render(msg:Any) : Any {
+        if ( Config.c.log.json == true) {
             return Json.stringify(msg);
         } else {
             return msg;
         }
     }
 
-    private function log(loglevel:String, logtext:String, src:String) : Void {
-        //var msg = '${Date.now()} :: ${src} :: ${loglevel} :: ${logtext}';
+    private static function log(loglevel:String, logtext:String, src:String) : Void {
         var msg = {
             timestamp : Date.now(),
             source    : src,
             loglevel  : loglevel,
             logtext   : logtext
         };
-        if (this.outlog == true) {
-            trace(this.render(msg, this.jsonstdout));
+        if (Config.c.log.log_to_stdout == true) {
+            trace(Log.render(msg));
         }
-        if (this.filelog == true) {
-            var f = sys.io.File.append(this.logpath);
-            f.writeString('${this.render(msg, this.jsonfile)}\n');
+        if (Config.c.log.log_to_file == true) {
+            var f = sys.io.File.append(Config.c.log.file_path);
+            f.writeString('${Log.render(msg)}\n');
             f.flush();
             f.close();
         }
@@ -180,20 +77,20 @@ class Logger {
         }
     }
 
-    public function debug(text:Null<String>=null, source:String='Main') : Void {
-        this.log('DEBUG', text, source);
+    public static function debug(text:Null<String>=null, source:String='Main') : Void {
+        Log.log('DEBUG', text, source);
     }
 
-    public function info(text:Null<String>=null, source:String='Main') : Void {
-        this.log('INFO ', text, source);
+    public static function info(text:Null<String>=null, source:String='Main') : Void {
+        Log.log('INFO ', text, source);
     }
 
-    public function warn(text:Null<String>=null, source:String='Main') : Void {
-        this.log('WARN ', text, source);
+    public static function warn(text:Null<String>=null, source:String='Main') : Void {
+        Log.log('WARN ', text, source);
     }
 
-    public function error(text:Null<String>=null, source:String='Main') : Void {
-        this.log('ERROR', text, source);
+    public static function error(text:Null<String>=null, source:String='Main') : Void {
+        Log.log('ERROR', text, source);
     }
 
 
@@ -209,27 +106,26 @@ class ChildProcess {
     public var stdout:haxe.io.Input;
     public var stderr:haxe.io.Input;
     private var p:sys.io.Process;
-    private var log:Logger;
     public var rc:Null<Int> = null;
     private var statusThread:Thread;
     private var outThread:Thread;
     private var errThread:Thread;
 
 
-    public function new(name:String, command:String, vital:Bool, comments:String, environment:Array<Dynamic>, log:Logger) : Void {
+    public function new(name:String, command:String, vital:Bool, comments:String, environment:Array<Dynamic>) : Void {
         // return a new child process object
         this.name = name;
         this.command = command;
         this.vital = vital;
         this.comments = comments;
         this.environment = environment;
-        this.log = log;
         return;
     }
 
     public function start() : Bool {
         // start the child process here
         try {
+            var e = this.envConvert(this.environment)
             this.p = new sys.io.Process(this.command);
             this.stdout = this.p.stdout;
             this.stderr = this.p.stderr;
@@ -239,11 +135,15 @@ class ChildProcess {
             this.errThread = Thread.create(this.readStderr);
         } catch (e:Dynamic) {
             if (e) {
-                this.log.warn(e, 'class ChildProcess() -> method start() -> ${this.name}');
+                Log.warn(e, 'class ChildProcess() -> method start() -> ${this.name}');
                 return false;
             }
         }
         return true;
+    }
+
+    public function envConvert(env) : Any {
+        
     }
 
     public function stop() : Void {
@@ -263,18 +163,29 @@ class ChildProcess {
 
     private function readStdout() : Void {
         var l = new Timer(100);
+        var pos:Int = 0;
         l.run = function () {
             try {
-                var d = [
-                    'line' => this.stdout.readLine(),
-                    'source' => this.name
-                ];
-                trace(d);
-                Queue.outq.push(d);
+                var txt:String = '';
+                while (true) {
+                    var b:String = this.stdout.read(1).toString();
+                    if (b == '\n') {
+                        var d = [
+                            'line' => txt,
+                            'source' => this.name
+                        ];
+                        Queue.outq.push(d);
+                        txt = '';
+                        pos++;
+                        continue;
+                    }
+                    txt += b;
+                    pos++;
+                }
             } catch (e:Dynamic) {
                 if (e != 'Eof') {
                     trace(e);
-                    this.log.error(e, this.name);
+                    Log.error(e, this.name);
                 }
             }
         }
@@ -284,23 +195,98 @@ class ChildProcess {
 
     private function readStderr() : Void {
         var l = new Timer(100);
+        var pos:Int = 0;
         l.run = function () {
             try {
-                var d = [
-                    'line' => this.stderr.readLine(),
-                    'source' => this.name
-                ];
-                trace(d);
-                Queue.errq.push(d);
+                var txt:String = '';
+                while (true) {
+                    var b:String = this.stderr.read(1).toString();
+                    if (b == '\n') {
+                        var d = [
+                            'line' => txt,
+                            'source' => this.name
+                        ];
+                        Queue.errq.push(d);
+                        txt = '';
+                        pos++;
+                        continue;
+                    }
+                    txt += b;
+                    pos++;
+                }
             } catch (e:Dynamic) {
                 if (e != 'Eof') {
                     trace(e);
-                    this.log.error(e, this.name);
+                    Log.error(e, this.name);
                 }
             }
         }
         l.run();
         return;
     }
+
+}
+
+class EventLoop {
+
+    public static var procs:Array<ChildProcess> = [];
+    public static var counter:Int = 0;
+    public static var daemons:Array<Dynamic>;
+    public static var init:Bool = false;
+    public static var loop:Thread;
+    public static var status:Int;
+
+    public static function runOnce() : Void {
+        EventLoop.getDaemons();
+        EventLoop.spawn();
+        EventLoop.init = true;
+        Log.debug('Completed first run tasks.', 'EventLoop.runOnce');
+        return;
+    }
+
+    public static function getDaemons() : Void {
+        var f = sys.io.File.getContent('daemons.json');
+        var units = haxe.Json.parse(f);
+        EventLoop.daemons = units;
+        return;
+    }
+
+    public static function spawn() : Void {
+        for (d in EventLoop.daemons) {
+            var p = new ChildProcess(d.name, d.command, d.vital, d.comments, d.environment);
+            var res = p.start();
+            if (res == true) {
+                EventLoop.procs.push(p);
+            } else {
+                Log.error('Daemon ${d.name} failed to start; failing', 'EventLoop.spawn');
+            }
+        }
+        return;
+    }
+
+    public static function checkStatus() : Void {
+        for (p in EventLoop.procs) {
+            if (p.rc != null) {
+                Log.info('Daemon ${p.name} exited with status code ${p.rc}', 'EventLoop.checkStatus');
+                if (p.vital == true) {
+                    Log.error('${p.name} has exited and is marked as vital.', 'EventLoop.checkStatus');
+                }
+            }
+        }
+        return;
+    }
+
+    public static function getOutput() : Void {
+        var out = Queue.outq.shift();
+        if (out != null) {
+            Log.info(out.get('line'), out.get('source'));
+        }
+        var err = Queue.errq.shift();
+        if (err != null) {
+            Log.warn(err.get('line'), err.get('source'));
+        }
+        return;
+    }
+
 
 }

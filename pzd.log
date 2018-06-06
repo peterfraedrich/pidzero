@@ -389,3 +389,115 @@
 {"logtext":"Started new event loop.","timestamp":"2018-06-06 15:48:55","loglevel":"DEBUG","source":"Main"}
 {"logtext":"Started pidzero","timestamp":"2018-06-06 15:49:59","loglevel":"DEBUG","source":"Main"}
 {"logtext":"Started new event loop.","timestamp":"2018-06-06 15:49:59","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting p0","timestamp":"2018-06-06 17:20:11","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting p⃠","timestamp":"2018-06-06 17:23:19","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 17:23:34","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 17:52:19","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:03:30","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:04:18","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:05:42","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:06:18","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:06:51","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:07:18","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:07:18","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:07:55","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:07:55","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:08:33","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:08:33","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:11:44","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:11:44","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"Daemon testdaemon2 exited with status code 0","timestamp":"2018-06-06 18:11:54","loglevel":"INFO ","source":"EventLoop.checkStatus"}
+{"logtext":"testdaemon2 has exited and is marked as vital.","timestamp":"2018-06-06 18:11:54","loglevel":"ERROR","source":"EventLoop.checkStatus"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:12:35","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:12:35","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:13:04","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:13:04","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"Daemon testdaemon2 exited with status code 0","timestamp":"2018-06-06 18:13:14","loglevel":"INFO ","source":"EventLoop.checkStatus"}
+{"logtext":"testdaemon2 has exited and is marked as vital.","timestamp":"2018-06-06 18:13:14","loglevel":"ERROR","source":"EventLoop.checkStatus"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:14:07","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:14:07","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:14:07","loglevel":"INFO ","source":"Main"}
+{"logtext":"Daemon testdaemon2 exited with status code 0","timestamp":"2018-06-06 18:14:17","loglevel":"INFO ","source":"EventLoop.checkStatus"}
+{"logtext":"testdaemon2 has exited and is marked as vital.","timestamp":"2018-06-06 18:14:17","loglevel":"ERROR","source":"EventLoop.checkStatus"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:18:35","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:18:35","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:18:35","loglevel":"INFO ","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:26:48","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:26:48","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:26:48","loglevel":"INFO ","source":"Main"}
+{"logtext":"Daemon testdaemon2 exited with status code 0","timestamp":"2018-06-06 18:26:58","loglevel":"INFO ","source":"EventLoop.checkStatus"}
+{"logtext":"testdaemon2 has exited and is marked as vital.","timestamp":"2018-06-06 18:26:58","loglevel":"ERROR","source":"EventLoop.checkStatus"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:27:10","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:27:10","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:27:10","loglevel":"INFO ","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:29:03","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:29:03","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:29:03","loglevel":"INFO ","source":"Main"}
+{"logtext":"Daemon testdaemon2 exited with status code 0","timestamp":"2018-06-06 18:32:23","loglevel":"INFO ","source":"EventLoop.checkStatus"}
+{"logtext":"testdaemon2 has exited and is marked as vital.","timestamp":"2018-06-06 18:32:23","loglevel":"ERROR","source":"EventLoop.checkStatus"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:32:30","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:32:30","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:32:30","loglevel":"INFO ","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:33:05","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:33:05","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:33:05","loglevel":"INFO ","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:33:48","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:33:48","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:33:48","loglevel":"INFO ","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:34:00","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:34:00","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:34:00","loglevel":"INFO ","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:36:29","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:36:29","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":null,"timestamp":"2018-06-06 18:36:29","loglevel":"INFO ","source":"Main"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:37:10","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:37:10","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"sleeeeeeeeep","timestamp":"2018-06-06 18:37:10","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:37:41","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:37:41","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"sleeeeeeeeep","timestamp":"2018-06-06 18:37:41","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"\nhello","timestamp":"2018-06-06 18:37:41","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:38:25","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:38:25","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"sleeeeeeeeep","timestamp":"2018-06-06 18:38:25","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"hello","timestamp":"2018-06-06 18:38:25","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:38:34","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:38:34","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"sleeeeeeeeep","timestamp":"2018-06-06 18:38:34","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"hello","timestamp":"2018-06-06 18:38:34","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:39:42","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:39:42","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"sleeeeeeeeep","timestamp":"2018-06-06 18:39:42","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"hello","timestamp":"2018-06-06 18:39:42","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:40:21","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:40:21","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"sleeeeeeeeep","timestamp":"2018-06-06 18:40:21","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"hello","timestamp":"2018-06-06 18:40:21","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:41:06","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:41:06","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"PING 127.0.0.1 (127.0.0.1): 56 data bytes","timestamp":"2018-06-06 18:41:07","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 0","timestamp":"2018-06-06 18:41:07","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 1","timestamp":"2018-06-06 18:41:08","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 2","timestamp":"2018-06-06 18:41:09","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 3","timestamp":"2018-06-06 18:41:10","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 4","timestamp":"2018-06-06 18:41:11","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 5","timestamp":"2018-06-06 18:41:12","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 6","timestamp":"2018-06-06 18:41:13","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 7","timestamp":"2018-06-06 18:41:14","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 8","timestamp":"2018-06-06 18:41:15","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:41:29","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:41:29","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"PING 127.0.0.1 (127.0.0.1): 56 data bytes","timestamp":"2018-06-06 18:41:30","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 0","timestamp":"2018-06-06 18:41:30","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"PING 8.8.8.8 (8.8.8.8): 56 data bytes","timestamp":"2018-06-06 18:41:30","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 0","timestamp":"2018-06-06 18:41:30","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 1","timestamp":"2018-06-06 18:41:31","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 1","timestamp":"2018-06-06 18:41:31","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 2","timestamp":"2018-06-06 18:41:32","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 2","timestamp":"2018-06-06 18:41:32","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 3","timestamp":"2018-06-06 18:41:33","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 3","timestamp":"2018-06-06 18:41:33","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 4","timestamp":"2018-06-06 18:41:34","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 4","timestamp":"2018-06-06 18:41:34","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 5","timestamp":"2018-06-06 18:41:35","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 5","timestamp":"2018-06-06 18:41:35","loglevel":"INFO ","source":"testdaemon1"}

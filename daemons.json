@@ -1,7 +1,7 @@
 [
     {
         "name" : "testdaemon1",
-        "command": "/usr/bin/nc -l -k 5000",
+        "command": "ping 8.8.8.8",
         "vital": true,
         "comments": "test service",
         "environment":[
@@ -10,7 +10,7 @@
     },
     {
         "name" : "testdaemon2",
-        "command": "/usr/bin/nc -l -k 5001",
+        "command": "ping 127.0.0.1",
         "vital": true,
         "comments": "test service #2",
         "environment": []
