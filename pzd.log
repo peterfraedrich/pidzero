@@ -501,3 +501,41 @@
 {"logtext":"Request timeout for icmp_seq 4","timestamp":"2018-06-06 18:41:34","loglevel":"INFO ","source":"testdaemon2"}
 {"logtext":"Request timeout for icmp_seq 5","timestamp":"2018-06-06 18:41:35","loglevel":"INFO ","source":"testdaemon2"}
 {"logtext":"Request timeout for icmp_seq 5","timestamp":"2018-06-06 18:41:35","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:48:20","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:48:20","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"PING 127.0.0.1 (127.0.0.1): 56 data bytes","timestamp":"2018-06-06 18:48:21","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"PING 8.8.8.8 (8.8.8.8): 56 data bytes","timestamp":"2018-06-06 18:48:21","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 0","timestamp":"2018-06-06 18:48:21","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 0","timestamp":"2018-06-06 18:48:21","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 1","timestamp":"2018-06-06 18:48:22","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 1","timestamp":"2018-06-06 18:48:22","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 2","timestamp":"2018-06-06 18:48:23","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 2","timestamp":"2018-06-06 18:48:23","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 3","timestamp":"2018-06-06 18:48:24","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 3","timestamp":"2018-06-06 18:48:24","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Starting pidzero","timestamp":"2018-06-06 18:48:56","loglevel":"DEBUG","source":"Main"}
+{"logtext":"Completed first run tasks.","timestamp":"2018-06-06 18:48:56","loglevel":"DEBUG","source":"EventLoop.runOnce"}
+{"logtext":"PING 127.0.0.1 (127.0.0.1): 56 data bytes","timestamp":"2018-06-06 18:48:57","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"PING 8.8.8.8 (8.8.8.8): 56 data bytes","timestamp":"2018-06-06 18:48:57","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 0","timestamp":"2018-06-06 18:48:57","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 0","timestamp":"2018-06-06 18:48:57","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 1","timestamp":"2018-06-06 18:48:58","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 2","timestamp":"2018-06-06 18:48:59","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 2","timestamp":"2018-06-06 18:48:59","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 3","timestamp":"2018-06-06 18:49:00","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 3","timestamp":"2018-06-06 18:49:00","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 4","timestamp":"2018-06-06 18:49:01","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 4","timestamp":"2018-06-06 18:49:01","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 5","timestamp":"2018-06-06 18:49:02","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 5","timestamp":"2018-06-06 18:49:02","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 6","timestamp":"2018-06-06 18:49:03","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 6","timestamp":"2018-06-06 18:49:03","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 7","timestamp":"2018-06-06 18:49:04","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 7","timestamp":"2018-06-06 18:49:04","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 8","timestamp":"2018-06-06 18:49:05","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 8","timestamp":"2018-06-06 18:49:05","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 9","timestamp":"2018-06-06 18:49:06","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 9","timestamp":"2018-06-06 18:49:06","loglevel":"INFO ","source":"testdaemon1"}
+{"logtext":"Request timeout for icmp_seq 10","timestamp":"2018-06-06 18:49:07","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 11","timestamp":"2018-06-06 18:49:08","loglevel":"INFO ","source":"testdaemon2"}
+{"logtext":"Request timeout for icmp_seq 11","timestamp":"2018-06-06 18:49:08","loglevel":"INFO ","source":"testdaemon1"}

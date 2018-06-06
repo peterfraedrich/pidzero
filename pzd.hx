@@ -64,7 +64,8 @@ class Log {
             logtext   : logtext
         };
         if (Config.c.log.log_to_stdout == true) {
-            trace(Log.render(msg));
+            var out = Sys.stdout();
+            out.writeString('${Log.render(msg)}\n');
         }
         if (Config.c.log.log_to_file == true) {
             var f = sys.io.File.append(Config.c.log.file_path);
@@ -125,7 +126,7 @@ class ChildProcess {
     public function start() : Bool {
         // start the child process here
         try {
-            var e = this.envConvert(this.environment);
+            //var e = this.envConvert(this.environment);
             this.p = new sys.io.Process(this.command);
             this.stdout = this.p.stdout;
             this.stderr = this.p.stderr;
@@ -142,7 +143,7 @@ class ChildProcess {
         return true;
     }
 
-    public function envConvert(env) : Any {
+    public function envConvert(env) : Void {
         /// convert 'environment' to bash inline env vars
     }
 
