@@ -125,7 +125,7 @@ class ChildProcess {
     public function start() : Bool {
         // start the child process here
         try {
-            var e = this.envConvert(this.environment)
+            var e = this.envConvert(this.environment);
             this.p = new sys.io.Process(this.command);
             this.stdout = this.p.stdout;
             this.stderr = this.p.stderr;
@@ -143,7 +143,7 @@ class ChildProcess {
     }
 
     public function envConvert(env) : Any {
-        
+        /// convert 'environment' to bash inline env vars
     }
 
     public function stop() : Void {
