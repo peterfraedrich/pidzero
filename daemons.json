@@ -1,16 +1,18 @@
 [
     {
+        "name" : "testdaemon1",
         "command": "/usr/bin/nc -l -k 5000",
         "vital": true,
         "comments": "test service",
-        "environment": {
-            "test": "somevar"
-        }
+        "environment":[
+            { "test": "somevar" }
+        ]
     },
     {
+        "name" : "testdaemon2",
         "command": "/usr/bin/nc -l -k 5001",
         "vital": true,
         "comments": "test service #2",
-        "environment": {}
+        "environment": []
     }
 ]

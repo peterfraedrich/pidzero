@@ -1,0 +1,13 @@
+{
+    "log" : {
+        "stdout_as_json" : true,
+        "file_as_json" : true,
+        "file_path" : "pzd.log",
+        "log_to_file" : true,
+        "log_to_stdout" : true
+    },
+    "api" : {
+        "enable" : true,
+        "port" : 5000,
+    }
+}
