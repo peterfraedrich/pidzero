@@ -1,4 +1,5 @@
 # PIDZERO
+![zero](https://upload.wikimedia.org/wikipedia/commons/9/9a/Zero_Logo.png)
 
 `pidzero` is a lightweight process host designed exclusively for Docker/LXC containers. `pidzero` lets you run multiple process inside a container safely while avoiding "dead container" situations by failing fast.
 
@@ -103,10 +104,10 @@ None of these were designed to be run in a container and their design shows it. 
 ***
 
 #### Roadmap
-* REST API to `pidzero` for healthcheck and daemon information
-* TCP API for healthcheck and daemon information
-* Additional log formats and handlers
-* CLI tool (?)
+- [ ] REST API to `pidzero` for healthcheck and daemon information
+- [ ] TCP API for healthcheck and daemon information
+- [ ] Additional log formats and handlers
+- [ ] CLI tool (?)
 
 ***
 
