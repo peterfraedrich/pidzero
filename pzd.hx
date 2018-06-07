@@ -1,8 +1,6 @@
 // pidzero daemon
 // a docker process manager designed for docker
 
-// TODO: turn event loops into threads, because this shit is dumb AF
-
 import haxe.sys.*;
 import haxe.Timer;
 import haxe.*;
@@ -10,9 +8,6 @@ import sys.*;
 #if cpp
     import cpp.vm.Thread;
     import cpp.vm.*;
-#end
-#if neko
-    import neko.vm.Thread;
 #end
 
 class Pzd {
@@ -28,6 +23,7 @@ class Pzd {
             EventLoop.getOutput();
             EventLoop.checkStatus();
             EventLoop.counter++;
+            Sys.sleep(0.01); // keep us from pegging the CPU to 100%
         }
     }
 }
@@ -35,8 +31,13 @@ class Pzd {
 class Config {
     public static var c:Null<Dynamic>;
     public static function loadConfig() : Void {
-        var j = sys.io.File.getContent('config.json');
-        Config.c = haxe.Json.parse(j);
+        try {
+            var c = sys.io.File.getContent('config.json');
+            var j:Dynamic = haxe.Json.parse(c);
+            Config.c = j;
+        } catch (e:Dynamic) {
+            trace(e);
+        }
         return;
     }
 }
@@ -126,8 +127,7 @@ class ChildProcess {
     public function start() : Bool {
         // start the child process here
         try {
-            //var e = this.envConvert(this.environment);
-            this.p = new sys.io.Process(this.command);
+            this.p = new sys.io.Process('${this.environment.join(" ")} ${this.command}');
             this.stdout = this.p.stdout;
             this.stderr = this.p.stderr;
             this.pid = this.p.getPid();
@@ -141,10 +141,6 @@ class ChildProcess {
             }
         }
         return true;
-    }
-
-    public function envConvert(env) : Void {
-        /// convert 'environment' to bash inline env vars
     }
 
     public function stop() : Void {
@@ -185,7 +181,6 @@ class ChildProcess {
                 }
             } catch (e:Dynamic) {
                 if (e != 'Eof') {
-                    trace(e);
                     Log.error(e, this.name);
                 }
             }
@@ -217,7 +212,6 @@ class ChildProcess {
                 }
             } catch (e:Dynamic) {
                 if (e != 'Eof') {
-                    trace(e);
                     Log.error(e, this.name);
                 }
             }
@@ -253,6 +247,9 @@ class EventLoop {
     }
 
     public static function spawn() : Void {
+        if (EventLoop.daemons.length == 0) {
+            Log.error('There are no daemons to run. Nothing to do!', 'spawn');
+        }
         for (d in EventLoop.daemons) {
             var p = new ChildProcess(d.name, d.command, d.vital, d.comments, d.environment);
             var res = p.start();

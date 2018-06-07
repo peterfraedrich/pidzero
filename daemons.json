@@ -1,18 +1,11 @@
 [
     {
-        "name" : "testdaemon1",
-        "command": "ping 8.8.8.8",
+        "name": "test",
+        "command": "sleep 100",
+        "comment": "this is a test daemon definition for the purpose of documentation",
         "vital": true,
-        "comments": "test service",
-        "environment":[
-            { "test": "somevar" }
+        "environment": [
+            "MY_CUSTOM_VARIABLE=mycustomvalue"
         ]
-    },
-    {
-        "name" : "testdaemon2",
-        "command": "ping 127.0.0.1",
-        "vital": true,
-        "comments": "test service #2",
-        "environment": []
     }
 ]

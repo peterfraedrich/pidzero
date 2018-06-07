@@ -1,12 +1,8 @@
 {
-    "log" : {
-        "json" : true,
-        "file_path" : "pzd.log",
-        "log_to_file" : true,
-        "log_to_stdout" : true
-    },
-    "api" : {
-        "enable" : true,
-        "port" : 5000
+    "log": {
+        "json": true,
+        "file_path": "pidzero.log",
+        "log_to_file": true,
+        "log_to_stdout": true
     }
 }
