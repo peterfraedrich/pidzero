@@ -97,6 +97,9 @@ What about `supervisord`, `runit`, `sysinit`, `systemd`, or `<insert init system
 
 None of these were designed to be run in a container and their design shows it. `runit` relies on a convoluted (and frankly confusing) folder structure, `sysinit` and `systemd` were designed for full Linux installs and are often not even included in containers due to security or compatibility issues, and `supervisord` is not designed to be "PID 1" and is too heavy for a container.
 
+## Building From Source
+[Haxe](https://haxe.org) is required to build this app. Please install `haxe` and run `make compile`. The compiled binary will be in the `dist/` directory.
+
 ***
 
 #### Roadmap
