@@ -30,7 +30,7 @@ ENTRYPOINT /opt/pidzero
 
 `pidzero` uses `config.json` to store its configuration. This file should be placed in the same folder as `pidzero`.
 
-```json
+```shell
 {
     "log": {
         "json": true,
@@ -49,7 +49,7 @@ ENTRYPOINT /opt/pidzero
 ### Daemon Configuration
 
 To configure a daemon for `pidzero` to run, you must specify its definition in `daemons.json` (which should be placed alongside `pidzero`). A sample `daemons.json` looks something like this:
-```json
+```shell
 [
     {
         "name" : "some_process",
