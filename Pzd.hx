@@ -75,7 +75,7 @@ class Queue {
 
 class Log {
 
-    private static function render(msg:Any) : Any {
+    private static function render(msg:Dynamic) : Dynamic {
         if ( Config.c.log.json == true) {
             return Json.stringify(msg);
         } else {
