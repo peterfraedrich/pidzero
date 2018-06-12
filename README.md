@@ -14,17 +14,21 @@
 ```Dockerfile
 # SAMPLE DOCKER FILE
 FROM ubuntu:18.04
-COPY pidzero daemons.json config.json /opt/
-ENTRYPOINT /opt/pidzero
+ENV CONFIGPATH=/etc/pidzero/config.json DAEMONPATH=/etc/pidzero/daemons.json
+RUN mkdir -p /etc/pidzero
+COPY daemons.json config.json pidzero /etc/pidzero/
+RUN chmod +x /etc/pidzero/pidzero
+ENTRYPOINT /etc/pidzero/pidzero --config $CONFIGPATH --daemons $DAEMONPATH
 ```
 
-`pidzero` should be placed in a directory alongside its configuration files, as such:
+`pidzero` looks for configuration in `/etc/pidzero`, both `config.json` and `daemons.json` should be placed there.
+Alternatively, you can provide command line arguments to `pidzero` with the `--config [path]` and `--daemon [path]` options.
 ```
-<directory>
-  |--- pidzero
-  |--- daemons.json
-  |--- config.json
-  |--- ...
+Available arguments are:
+--help               => show this help text
+--config [path]      => absolute path of config.json
+--daemons [path]     => absolute path of daemons.json
+
 ```
 
 ### Configuration
