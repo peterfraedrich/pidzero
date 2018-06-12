@@ -1,5 +1,7 @@
 image: haxe:latest
 before_script:
+  - apt update
+  - apt install -y gcc g++
   - haxelib install hxcpp
 
 build:
