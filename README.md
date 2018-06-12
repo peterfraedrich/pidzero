@@ -1,6 +1,8 @@
 # PIDZERO
 ![zero](https://upload.wikimedia.org/wikipedia/commons/9/9a/Zero_Logo.png)
 
+[![pipeline status](https://gitlab.com/hexapp.net/pidzero/badges/master/pipeline.svg)](https://gitlab.com/hexapp.net/pidzero/commits/master)
+
 `pidzero` is a lightweight process host designed exclusively for Docker/LXC containers. `pidzero` lets you run multiple process inside a container safely while avoiding "dead container" situations by failing fast.
 
 ### How it works
