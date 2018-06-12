@@ -14,6 +14,7 @@ class Pzd {
     // if name == main
     static public function main():Void {
         // do the stuff
+        Config.getArgs();
         Config.loadConfig();
         Log.debug('Starting pidzero');
         while (true) {
@@ -29,14 +30,39 @@ class Pzd {
 }
 
 class Config {
+    public static var configpath:String = '/etc/pidzero/config.json';
+    public static var daemonpath:String = '/etc/pidzero/daemons.json';
     public static var c:Null<Dynamic>;
+
+    public static function getArgs() : Void {
+        var args = Sys.args();
+        if (args.indexOf('--help') != -1) {
+            var out = Sys.stdout();
+            out.writeString('Available arguments are:\n');
+            out.writeString('--help               => show this help text\n');
+            out.writeString('--config [path]      => absolute path of config.json\n');
+            out.writeString('--daemons [path]     => absolute path of daemons.json\n');
+            out.close();
+            Sys.exit(0);
+        }
+        if (args.indexOf('--config') != -1) {
+            Config.configpath = args[args.indexOf('--config') + 1];
+        }
+        if (args.indexOf('--daemons') != -1) {
+            Config.daemonpath = args[args.indexOf('--daemons') + 1];
+        }
+        return;
+    }
+
     public static function loadConfig() : Void {
         try {
-            var c = sys.io.File.getContent('config.json');
+            var c = sys.io.File.getContent(Config.configpath);
             var j:Dynamic = haxe.Json.parse(c);
             Config.c = j;
         } catch (e:Dynamic) {
             trace(e);
+            throw 'Unable to find config file config.json; please make sure its at path /etc/pidzero/config.json';
+
         }
         return;
     }
@@ -240,10 +266,17 @@ class EventLoop {
     }
 
     public static function getDaemons() : Void {
-        var f = sys.io.File.getContent('daemons.json');
-        var units = haxe.Json.parse(f);
-        EventLoop.daemons = units;
-        return;
+        try {
+            var f = sys.io.File.getContent(Config.daemonpath);
+            var units = haxe.Json.parse(f);
+            EventLoop.daemons = units;
+            return;
+        } catch (e:Dynamic) {
+            var out = Sys.stderr();
+            trace(e);
+            throw 'Unable to open daemons definition at /etc/pidzero/daemons.json; make sure the file exists at this path.';
+        }
+
     }
 
     public static function spawn() : Void {
@@ -255,6 +288,7 @@ class EventLoop {
             var res = p.start();
             if (res == true) {
                 EventLoop.procs.push(p);
+                Log.debug('Daemon ${d.name} was started with command ${d.command}', 'EventLoop:spawn');
             } else {
                 Log.error('Daemon ${d.name} failed to start; failing', 'EventLoop.spawn');
             }
