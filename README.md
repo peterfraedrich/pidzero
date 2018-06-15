@@ -1,5 +1,5 @@
 # PIDZERO
-![zero](https://upload.wikimedia.org/wikipedia/commons/9/9a/Zero_Logo.png)
+![zero](pidzero_logo_framed_transp-01.png)
 
 [![pipeline status](https://gitlab.com/hexapp.net/pidzero/badges/master/pipeline.svg)](https://gitlab.com/hexapp.net/pidzero/commits/master)
 
