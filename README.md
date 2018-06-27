@@ -1,22 +1,22 @@
 # PIDZERO
-![zero](pidzero_logo_framed_transp-01.png)
+![zero](doc/pidzero_logo_framed_transp-01.png)
 
 [![pipeline status](https://gitlab.com/hexapp.net/pidzero/badges/master/pipeline.svg)](https://gitlab.com/hexapp.net/pidzero/commits/master)
 
 **pidzero** is a lightweight process host designed exclusively for Docker/LXC containers. **pidzero** lets you run multiple process inside a container safely while avoiding "dead container" situations by failing fast.
 
 ### How it works
-**pidzero** is a small binary that takes daemon definitions in a file `daemons.json` and then executes those process in a sub-process, much like how `systemd` or `supervisord` work. Unlike those and other init systems, **pidzero** will fail if any of the daemons marked `vital` exit for any reason. This ensures that your container will never be "alive" unless it is 100% healthy. Additionally, **pidzero** will output any daemon output (stdout and stderr) to a log file, its own stdout (to be captured by Docker or another logging system), or both. Output can be either in a custom `map` format, or JSON, where the process output is set to the `line` field.
+**pidzero** is a small (~10MB) binary that takes daemon definitions in a file `config.yaml` and then executes those process in a sub-process, much like how `systemd` or `supervisord` work. Unlike those and other init systems, **pidzero** will fail if any of the daemons marked `vital` exit for any reason. This ensures that your container will never be "alive" unless it is 100% healthy. Additionally, **pidzero** will output any daemon output (stdout and stderr) to a log file, its own stdout (to be captured by Docker or another logging system), or both. Output can be either in a "pretty" console output or JSON for easy capture by fluentd, logstash, or another log shipper.
 
 ### Quickstart
-Pull the latest **pidzero** image from Docker Hub, copy your app and `daemons.json` with your app setup in it to the container, build and run:
+Pull the latest **pidzero** image from Docker Hub, copy your app and `config.yaml` with your app setup in it to the container, build and run:
 ```shell
 $> docker pull hexapp/pidzero:latest
 cat << EOF > Dockerfile
 FROM hexapp/pidzero:latest
 COPY myapp /some/path/myapp
-COPY daemons.json /etc/pidzero/daemons.json
-ENTRYPOINT /etc/pidzero/pidzero --config $CONFIGPATH --daemons $DAEMONPATH
+COPY config.yaml /etc/pidzero/daemons.json
+ENTRYPOINT /etc/pidzero/pidzero --configFile $CONFIGPATH
 EOF
 $> docker build -t myapp:latest .
 $> docker run -d myapp:latest
@@ -31,79 +31,47 @@ $> docker run -d myapp:latest
 FROM ubuntu:18.04
 ENV CONFIGPATH=/etc/pidzero/config.json DAEMONPATH=/etc/pidzero/daemons.json
 RUN mkdir -p /etc/pidzero
-COPY daemons.json config.json pidzero /etc/pidzero/
+COPY config.yaml pidzero /etc/pidzero/
 RUN chmod +x /etc/pidzero/pidzero
-ENTRYPOINT /etc/pidzero/pidzero --config $CONFIGPATH --daemons $DAEMONPATH
+ENTRYPOINT /etc/pidzero/pidzero --configFile $CONFIGPATH
 ```
 
-**pidzero** looks for configuration in `/etc/pidzero`, both `config.json` and `daemons.json` should be placed there.
-Alternatively, you can provide command line arguments to **pidzero** with the `--config [path]` and `--daemon [path]` options.
+**pidzero** looks for configuration in the path passed by the `--configFile` flag, or in its local directory by default.
 ```
 Available arguments are:
---help               => show this help text
---config [path]      => absolute path of config.json
---daemons [path]     => absolute path of daemons.json
+--configFile [path]      => absolute path of config.yaml
 
 ```
 
 ### Configuration
 
-**pidzero** uses `config.json` to store its configuration. This file should be placed in the same folder as **pidzero**.
+**pidzero** uses `config.yaml` to store its configuration. This file should be placed in the same folder as **pidzero**.
 
-```shell
-{
-    "log": {
-        "json": true,
-        "file_path": "pidzero.log",
-        "log_to_file": true,
-        "log_to_stdout": true
-    }
-}
-
-- json           => enable JSON logging. set to `false` for map
-- file_path      => path for the logfile (if enabled)
-- log_to_file    => enable/disable file logging
-- log_to_stdout  => enable/disable logging to stdout
-```
-
-### Daemon Configuration
-
-To configure a daemon for **pidzero** to run, you must specify its definition in `daemons.json` (which should be placed alongside **pidzero**). A sample `daemons.json` looks something like this:
-```shell
-[
-    {
-        "name" : "some_process",
-        "command" : "/command/to/run -arg1 -arg2",
-        "comments" : "this is a demo process, please don't try to run this for real",
-        "vital" : true,
-        "environment" : [
-            "SOME_ENV_VAR=some_value",
-            "SOME_OTHER_VAR=another_value"
-        ]
-    },
-    {
-        "name" : "foobar",
-        "command" : "/foo/bar",
-        "comments" : "",
-        "vital" : false,
-        "environment" : []
-    }
-]
-
-- name        => a friendly name to give the process
-- command     => the command to run with args and such
-- comments    => any human-friendly comments to provide, these are ignored by the process host
-- vital       => marks the process as vital, if it is vital and it exits the process host will throw and error and quit
-- environment => linux-style environment variable declaration, will be appended to the beginning of <command> before running
-
-==> This JSON object _must_ be an array (list), otherwise everything will break.
-```
+Please see the comments in `config.yaml` for config file usage and spec.
 
 ### Logging
 
-By default all logs are captured and sent to **pidzero**'s `stdout` in JSON format. This can then be picked up by something like `fluentd` or `logstash` and sent to a log aggregation server. Optionally, **pidzero** can log to a file in the container if you're using a mounted volume for logging.
+By default all logs are captured and sent to **pidzero**'s `stdout`. This can then be picked up by something like `fluentd` or `logstash` and sent to a log aggregation server.
 
-The log format is either JSON or a map, and can be toggled with the `json:Bool` option in `config.json`.
+The log format is either JSON or pretty text, and can be toggled with the `pidzero.prettylogging` option in `config.yaml`.
+
+### API
+
+**pidzero** comes with a built-in REST API that can be leveraged for monitoring and information gathering. Authentication (optional) is done through bearer tokens, which can be set in `config.yaml`. The API also supports HTTPS when supplied with a certificate and key. 
+
+#### API Routes
+```
+/ping               => returns a JSON object {"ping" : "ok"}, useful for healthchecks as the API 
+                       will not respond if any vital daemons have exited
+/config             => return a JSON representation of config.yaml
+/config/api         => return API configuration
+/config/daemons     => return daemon configuration
+/config/pidzero     => return general configuration
+/env                => return a list of environment variables present in the container/host where 
+                       pidzero is running
+/stats              => return memory stats for pidzero
+```
+
 
 
 ### Best Practices
@@ -126,16 +94,22 @@ Tags:
 
 
 #### Building From Source
-[Haxe](https://haxe.org) is required to build this app. Please install `haxe` and run `make compile`. The compiled binary will be in the `dist/` directory.
+To build from source, first clone the **pidzero** repo, then run the following:
+```shell
+$> cd pidzero
+$> glide install
+$> go build .
+```
 
 ***
 
 #### Roadmap
-- [ ] REST API to **pidzero** for healthcheck and daemon information
 - [ ] TCP API for healthcheck and daemon information
 - [ ] Additional log formats and handlers
 - [ ] CLI tool (?)
 
 ***
 
-**pidzero** is written in Haxe and designed to be compiled to C++
+**pidzero** is written in Go.
+
+![gopher](doc/gofer.png)
