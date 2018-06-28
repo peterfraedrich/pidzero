@@ -15,8 +15,8 @@ $> docker pull hexapp/pidzero:latest
 cat << EOF > Dockerfile
 FROM hexapp/pidzero:latest
 COPY myapp /some/path/myapp
-COPY config.yaml /etc/pidzero/daemons.json
-ENTRYPOINT /etc/pidzero/pidzero --configFile $CONFIGPATH
+COPY config.yaml /some/path/config.yaml
+ENTRYPOINT /etc/pidzero/pidzero -config /path/to/config.yaml
 EOF
 $> docker build -t myapp:latest .
 $> docker run -d myapp:latest
@@ -28,18 +28,16 @@ $> docker run -d myapp:latest
 
 ```Dockerfile
 # SAMPLE DOCKER FILE
-FROM ubuntu:18.04
-ENV CONFIGPATH=/etc/pidzero/config.json DAEMONPATH=/etc/pidzero/daemons.json
-RUN mkdir -p /etc/pidzero
-COPY config.yaml pidzero /etc/pidzero/
-RUN chmod +x /etc/pidzero/pidzero
-ENTRYPOINT /etc/pidzero/pidzero --configFile $CONFIGPATH
+FROM hexapp/pidzero:2.0.1-ubuntu1804
+ADD yourapp /path/to/yourapp
+ADD config.yaml /etc/pidzero/
+CMD /etc/pidzero/pidzero -config /etc/pidzero/config.yaml
 ```
 
-**pidzero** looks for configuration in the path passed by the `--configFile` flag, or in its local directory by default.
+**pidzero** looks for configuration in the path passed by the `-config` flag, or in its local directory by default.
 ```
 Available arguments are:
---configFile [path]      => absolute path of config.yaml
+-config [path]      => absolute path of config.yaml
 
 ```
 
@@ -89,8 +87,9 @@ None of these were designed to be run in a container and their design shows it. 
 #### Docker
 Pull our Docker images from [Docker Hub](https://hub.docker.com/r/hexapp/pidzero): `hexapp/pidzero`
 Tags:
-* latest, ubuntu-18.04
-* alpine-3.7
+* latest, 2.0.1-scratch
+* 2.0.1-ubuntu1804
+* 2.0.1-alpine
 
 
 #### Building From Source

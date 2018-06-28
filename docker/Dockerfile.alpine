@@ -1,0 +1,4 @@
+FROM alpine:latest
+ADD pidzero /etc/pidzero/
+ADD config.yaml /etc/pidzero/
+CMD /etc/pidzero/pidzero -config /etc/pidzero/config.yaml
