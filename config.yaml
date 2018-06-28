@@ -1,105 +1,38 @@
-# API
-# general API settings
 api:
-  
-  # HOST
-  # IP address to listen on
   host: 0.0.0.0
-  
-  # PORT
-  # port number to listen for connections
   port: 5000
-  
-  # AUTH
   auth:
-  
-    # ENABLED
-    # enable authentication
     enabled: true
-  
-    # KEY
-    # authentication key/token, must be passed as "Authorization: Bearer <key>" header
     key: abcd1234
-  
-  # HTTPS
   https:
-  
-    # ENABLED
-    # use HTTPS/TLS for communication
     enabled: false
-  
-    # PRIVATE_KEY
-    # path to private key
     private_key: some.key
-  
-    # PUBLIC_KEY
-    # path to public key/cert
     public_key: some.crt
-  
-  # ACCESSLOG
-  # log access notices
   accesslog: true
-  
-  # LOGPING
-  # log ping healthchecks
   logping: true
 
-# DAEMONS
-# daemon definitions list
 daemons:
-
-    # NAME
-    # friendly name of the daemon
-  - name: test1
-
-    # DESCRIPTION
-    # friendly description of the daemon
-    description: some test service that does something
-  
-    # COMMAND
-    # command to execute
-    command: /bin/sh
-
-    # ARGS
-    # list of args; each item is an arg that would be separated by a space _not_ in quotes
-    args:
-      - -c
-      - while true; do echo "hello 1"; sleep 1; done
-
-    # VITAL
-    # mark as vital, causes pidzero to exit if this daemon quits
-    vital: true
-
-    # LOG
-    # log the daemon output
-    log: false
-
-    # ENV
-    # list of "KEY=value" environment variables to pass to the daemon
-    env:
-
-  - name: test2
-    description: some other test service that does something else
+  - name: test stdout
+    description: simple test for stdout logging
     command: /bin/sh
     args:
       - -c
-      - while true; do echo "hello 2"; sleep 1; done
+      - "while true; do echo 'stdout'; sleep 1; done"
     vital: true
-    log: false
+    log: true
     env:
 
-# PIDZERO
-# general settings
+  - name: test stderr
+    description: simple test for stderr logging
+    command: /bin/sh
+    args: 
+      - -c
+      - "while true; do echo 'error' 1>&2; sleep 1; done"
+    vital: true
+    log: true
+    env:
+
 pidzero:
-  # LOG QUEUE BUFFER SIZE
-  # set the log queue size. set this larger for daemons that pump out
-  # more output than normal or if you start losing logs
   buffersize: 4096
-
-  # LOG LEVEL
-  # show only logs at this level and above
   loglevel: debug
-
-  # PRETTY LOG OUTPUT
-  # set to false to log to JSON
   prettylogging: true

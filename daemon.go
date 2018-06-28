@@ -6,7 +6,6 @@ import (
 	"os"
 	"os/exec"
 	"syscall"
-	"time"
 )
 
 // Daemon : Implements a Daemon object that can be referenced for each
@@ -108,21 +107,25 @@ func (d *Daemon) readStdout() {
 func (d *Daemon) readStderr() {
 	<-d.ready
 	var stderr []byte
+
 	errbuf := make([]byte, 1, 1)
-	e, erre := d.stderr.Read(errbuf[:])
-	if e > 0 {
-		q := errbuf[:e]
-		if string(q) == "\n" {
-			d.log("error", string(stderr))
-			stderr = nil
-		} else {
-			stderr = append(stderr, q...)
+
+	for {
+		n, erro := d.stderr.Read(errbuf[:])
+		if n > 0 {
+			b := errbuf[:n]
+			if string(b) == "\n" {
+				d.log("warn", string(stderr))
+				stderr = nil
+			} else {
+				stderr = append(stderr, b...)
+			}
 		}
+		if erro == io.EOF {
+			erro = nil
+		}
+
 	}
-	if erre == io.EOF {
-		erre = nil
-	}
-	time.Sleep(1 * time.Nanosecond) // keep from locking up CPU
 }
 
 func (d *Daemon) log(l string, m string) {
