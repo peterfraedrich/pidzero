@@ -3,3 +3,7 @@ pidzero
 .vscode/
 vendor/
 glide.lockdebug
+cert/
+dist/
+*.crt
+*.key

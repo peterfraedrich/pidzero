@@ -12,20 +12,19 @@ import (
 
 // API : implements a REST API
 type API struct {
-	host          string
-	port          uint
-	authEnabled   bool
-	authKey       string
-	httpsEnabled  bool
-	httpsSelfSign bool
-	httpsPrivKey  string
-	httpsPubKey   string
-	logping       bool
-	accesslog     bool
-	q             chan interface{}
-	middleware    LogMiddleware
-	mainlogger    *logrus.Logger
-	config        Config
+	host         string
+	port         uint
+	authEnabled  bool
+	authKey      string
+	httpsEnabled bool
+	httpsPrivKey string
+	httpsPubKey  string
+	logping      bool
+	accesslog    bool
+	q            chan interface{}
+	middleware   LogMiddleware
+	mainlogger   *logrus.Logger
+	config       Config
 }
 
 func (a *API) handle() {
@@ -33,10 +32,11 @@ func (a *API) handle() {
 }
 
 func (a *API) start() {
+	fmt.Printf("%+v\n", a)
 	e := echo.New()
 	e.Logger = LogMiddleware{r: a.mainlogger}
 	e.Use(middleware.KeyAuth(func(key string, c echo.Context) (bool, error) {
-		if a.authEnabled == true {
+		if a.authEnabled {
 			return key == a.authKey, nil
 		}
 		return true, nil

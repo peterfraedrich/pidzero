@@ -2,12 +2,12 @@ api:
   host: 0.0.0.0
   port: 5000
   auth:
-    enabled: true
+    enabled: false
     key: abcd1234
   https:
-    enabled: false
-    private_key: some.key
-    public_key: some.crt
+    enabled: true
+    private_key: pz.key
+    public_key: pz.crt
   accesslog: true
   logping: true
 

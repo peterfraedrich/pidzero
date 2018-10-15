@@ -1,0 +1,11 @@
+[
+    {
+        "name": "test",
+        "command": "sleep 100",
+        "comment": "this is a test daemon definition for the purpose of documentation",
+        "vital": true,
+        "environment": [
+            "MY_CUSTOM_VARIABLE=mycustomvalue"
+        ]
+    }
+]

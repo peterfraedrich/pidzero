@@ -43,20 +43,19 @@ func main() {
 	}
 
 	api := API{
-		host:          c.API.Host,
-		port:          c.API.Port,
-		authEnabled:   c.API.Auth.Enabled,
-		authKey:       c.API.Auth.Key,
-		httpsEnabled:  c.API.HTTPS.Enabled,
-		httpsSelfSign: c.API.HTTPS.SelfSign,
-		httpsPrivKey:  c.API.HTTPS.PrivateKey,
-		httpsPubKey:   c.API.HTTPS.PublicKey,
-		logping:       c.API.LogPing,
-		accesslog:     c.API.AccessLog,
-		q:             logq,
-		middleware:    mw,
-		mainlogger:    l,
-		config:        c,
+		host:         c.API.Host,
+		port:         c.API.Port,
+		authEnabled:  c.API.Auth.Enabled,
+		authKey:      c.API.Auth.Key,
+		httpsEnabled: c.API.HTTPS.Enabled,
+		httpsPrivKey: c.API.HTTPS.PrivateKey,
+		httpsPubKey:  c.API.HTTPS.PublicKey,
+		logping:      c.API.LogPing,
+		accesslog:    c.API.AccessLog,
+		q:            logq,
+		middleware:   mw,
+		mainlogger:   l,
+		config:       c,
 	}
 	go api.start()
 

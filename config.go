@@ -10,35 +10,37 @@ import (
 // Config : implements a struct for our config.yaml
 type Config struct {
 	API struct {
-		Host string
-		Port uint
+		Host string `yaml:"host"`
+		Port uint   `yaml:"port"`
 		Auth struct {
-			Enabled bool
-			Key     string
+			Enabled bool   `yaml:"enabled"`
+			Key     string `yaml:"key"`
 		}
 		HTTPS struct {
-			Enabled    bool
-			SelfSign   bool
-			PrivateKey string
-			PublicKey  string
+			Enabled    bool   `yaml:"enabled"`
+			PrivateKey string `yaml:"private_key"`
+			PublicKey  string `yaml:"public_key"`
 		}
-		AccessLog bool
-		LogPing   bool
+		AccessLog bool `yaml:"accesslog"`
+		LogPing   bool `yaml:"logping"`
 	}
 	Daemons []struct {
-		Name        string
-		Description string
-		Command     string
-		Args        []string
-		Vital       bool
-		Log         bool
-		Env         []string
+		Name        string   `yaml:"name"`
+		Description string   `yaml:"description"`
+		Command     string   `yaml:"command"`
+		Args        []string `yaml:"args"`
+		Vital       bool     `yaml:"vital"`
+		Log         bool     `yaml:"log"`
+		Env         []string `yaml:"env"`
 	}
 	Pidzero struct {
-		BufferSize    uint64
-		LogLevel      string
-		PrettyLogging bool
+		BufferSize    uint64 `yaml:"buffersize"`
+		LogLevel      string `yaml:"loglevel"`
+		PrettyLogging bool   `yaml:"prettylogging"`
 	}
+}
+
+type https struct {
 }
 
 func (c *Config) read(p string) *Config {

@@ -1,9 +1,0 @@
-image: haxe:latest
-before_script:
-  - apt update
-  - apt install -y gcc g++
-  - haxelib install hxcpp
-
-build:
-  script:
-    - haxe -v -main Pzd -cp . -dce full -D analyzer-optimize -D source-header="pidzero" -D HXCPP_M64 -D static -lib hxcpp -cpp /tmp

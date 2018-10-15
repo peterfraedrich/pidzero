@@ -1,0 +1,8 @@
+{
+    "log": {
+        "json": true,
+        "file_path": "pidzero.log",
+        "log_to_file": false,
+        "log_to_stdout": true
+    }
+}
