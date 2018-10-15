@@ -30,8 +30,9 @@ build-ubuntu:
 	docker images | grep hexapp
 
 build-scratch:
-	GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w extldflags "-static"' -o pidzero *.go
+	GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w -extldflags "-static"' -o pidzero *.go
 	./docker/make-dockerfiles.sh
-	cp -f docker/Dockerfile.scratch ./Dockerfile 
-	docker build --compress --squash --force-rm --tag hexapp/pidzero:latest --tag hexapp/pidzero:$(shell cat .semver)-scratch .
+	cp -f docker/Dockerfile.scratch ./Dockerfile
+	docker build --compress --squash --force-rm --tag hexapp/pidzero:$(shell cat .semver) .
+	rm -f Dockerfile
 	docker images | grep hexapp
