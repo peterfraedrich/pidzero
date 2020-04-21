@@ -1,7 +1,7 @@
 # PIDZERO
 ![zero](doc/pidzero_logo_framed_transp-01.png)
 
-[![pipeline status](https://gitlab.com/hexapp.net/pidzero/badges/master/pipeline.svg)](https://gitlab.com/hexapp.net/pidzero/commits/master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/peterfraedrich/consulmq)](https://goreportcard.com/report/github.com/peterfraedrich/consulmq)
 
 **pidzero** is a lightweight process host designed exclusively for Docker/LXC containers. **pidzero** lets you run multiple process inside a container safely while avoiding "dead container" situations by failing fast.
 
